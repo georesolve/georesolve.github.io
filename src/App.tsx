@@ -5,6 +5,7 @@ import { useAuthStore } from '@/store/authStore';
 import HomePage from '@/pages/HomePage';
 import LoginPage from '@/pages/LoginPage';
 import RegisterPage from '@/pages/RegisterPage';
+import NotFoundPage from '@/pages/NotFoundPage';
 
 // Dashboard
 import DashboardLayout from '@/components/layout/DashboardLayout';
@@ -84,8 +85,8 @@ export default function App() {
           <Route path="settings" element={<ProfilePage />} />
         </Route>
 
-        {/* Catch all - redirect to home */}
-        <Route path="*" element={<Navigate to="/" replace />} />
+        {/* Catch all - 404 page */}
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
       <ScrollToTop />
     </>
