@@ -1,68 +1,138 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+  --gradient-primary: linear-gradient(135deg, #22d3ee 0%, #3b82f6 100%);
+  --gradient-dark: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
+}
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+  /* Account for fixed header */
+}
+
+/* Optimize smooth scrolling performance */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  * {
+    scroll-margin-top: 80px;
+  }
+}
+
+/* Disable smooth scroll for users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
+/* Custom scrollbar - Dark theme */
+[data-mantine-color-scheme="dark"] ::-webkit-scrollbar,
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
 }
 
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+[data-mantine-color-scheme="dark"] ::-webkit-scrollbar-track,
+::-webkit-scrollbar-track {
+  background: #1a1b1e;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+[data-mantine-color-scheme="dark"] ::-webkit-scrollbar-thumb,
+::-webkit-scrollbar-thumb {
+  background: #373a40;
+  border-radius: 4px;
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+[data-mantine-color-scheme="dark"] ::-webkit-scrollbar-thumb:hover,
+::-webkit-scrollbar-thumb:hover {
+  background: #4a4d54;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
+/* Custom scrollbar - Light theme */
+[data-mantine-color-scheme="light"] ::-webkit-scrollbar-track {
+  background: #f1f3f5;
+}
+
+[data-mantine-color-scheme="light"] ::-webkit-scrollbar-thumb {
+  background: #ced4da;
+  border-radius: 4px;
+}
+
+[data-mantine-color-scheme="light"] ::-webkit-scrollbar-thumb:hover {
+  background: #adb5bd;
+}
+
+/* Gradient text */
+.gradient-text {
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Glass effect */
+.glass {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Animations */
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0);
   }
-  a:hover {
-    color: #747bff;
+
+  50% {
+    transform: translateY(-10px);
   }
-  button {
-    background-color: #f9f9f9;
+}
+
+@keyframes pulse-glow {
+
+  0%,
+  100% {
+    box-shadow: 0 0 20px rgba(34, 211, 238, 0.3);
   }
+
+  50% {
+    box-shadow: 0 0 40px rgba(34, 211, 238, 0.5);
+  }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* Hero background pattern - Smooth gradients */
+.hero-pattern {
+  background-image:
+    radial-gradient(circle at 20% 50%, rgba(34, 211, 238, 0.08) 0%, rgba(34, 211, 238, 0.04) 30%, transparent 60%),
+    radial-gradient(circle at 80% 20%, rgba(59, 130, 246, 0.08) 0%, rgba(59, 130, 246, 0.04) 30%, transparent 60%),
+    radial-gradient(circle at 40% 80%, rgba(167, 139, 250, 0.04) 0%, rgba(167, 139, 250, 0.02) 30%, transparent 60%);
+  background-size: 100% 100%;
+  background-position: center;
+  background-repeat: no-repeat;
 }
